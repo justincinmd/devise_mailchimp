@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = DeviseMailchimp::VERSION
   s.authors     = ["Justin Cunningham"]
   s.email       = ["justin@compucatedsolutions.com"]
-  s.homepage    = "https://github.com/jcnnghm/devise_mailchimp"
+  s.homepage    = "http://jcnnghm.github.com/devise_mailchimp/"
   s.summary     = %q{Easy MailChimp integration for Devise}
   s.description = %q{Devise MailChimp adds a MailChimp option to devise that easily enables users to join your mailing list when they create an account.}
 
