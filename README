@@ -1,0 +1,78 @@
+= Devise MailChimp
+
+Devise MailChimp adds a MailChimp option to {devise}[https://github.com/plataformatec/devise] that easily enables users
+to join your mailing list when they create an account.
+
+{Delayed Job}[https://github.com/collectiveidea/delayed_job] is used automatically if your project uses it, and the
+mapping between list names and list ids is cached automatically.
+
+== Getting started
+
+In your Gemfile, add devise_mailchimp after devise:
+
+  gem "devise"
+  gem "devise_mailchimp"  # Last officially released gem
+
+In your User model, add :mailchimp to the devise call:
+
+  devise :database_authenticatable, ..., :mailchimp
+
+In your devise initializer (config/initializers/devise.rb), set your API key and mailing list name:
+
+  Devise.mailchimp_api_key = 'your_api_key'
+  Devise.mailing_list_name = 'List Name'
+
+If you are using the default Devise registration views, the Join Mailing List checkbox is added automatically, if not,
+either include the form partial in your new registration form:
+
+  <%= render :partial => "devise/shared/mailchimp/form", :locals => {:form => f} %>
+
+Or manually add a "Join Mailing List" checkbox to your new registration form:
+
+  <%=form.check_box :join_mailing_list%>
+
+== Configuration
+
+Create an initializer, and set your MailChimp API key.  To generate a new API key, go to the account tab in your
+MailChimp account and select API Keys & Authorized Apps, then add a key.
+
+  Devise.mailchimp_api_key = 'your_api_key'
+
+Create a mailing list, and set the mailing list name in the initializer.  To create a MailChimp list, from your account
+go to the Lists tab, then hit create list.
+
+  Devise.mailing_list_name = 'List Name'
+
+== Example Usage
+
+Users will join the default mailing list if join_mailing_list is set to true when the user is created.  To manually add
+a user:
+
+  User.find(1).add_to_mailchimp_list('Site Administrators List')
+
+To manually remove a user:
+
+  User.find(1).remove_from_mailchimp_list('Site Administrators List')
+
+NOTE:  You MUST have the users permission to add them to a mailing list.
+
+== Customization
+
+To have the user join more than one list, or to override the lists that the user will join, override
+mailchimp_lists_to_join in your model.  Your method should return a single list, or an array of lists.
+
+  def mailchimp_lists_to_join
+    lists = ["Site Users List"]
+    lists << "Site Admins List" if admin?
+    return lists
+  end
+
+If all users will join the same list or lists, just set the mailing_list_name configuration option.
+
+== Contributions
+
+Please help this software improve by submitting pull requests, preferably with tests.
+
+== Copyright
+
+Copyright (c) 2011 {Justin Cunningham}[http://littlebitofcode.com]. See MIT_LICENSE for details.
