@@ -49,7 +49,7 @@
       Easy MailChimp integration for Devise
     </div>
 
-    <p>Devise MailChimp adds a MailChimp option to Devise that easily enables users to join your mailing list when they create an account.
+    <p>Devise MailChimp adds a MailChimp option to Devise that easily enables users to join your mailing list when they create an account.</p><p>
 
 Delayed Job is used automatically if your project uses it, and the
 mapping between list names and list ids is cached automatically.</p><h2>Dependencies</h2>
@@ -57,32 +57,42 @@ mapping between list names and list ids is cached automatically.</p><h2>Dependen
 <h2>Install</h2>
 <p>In your Gemfile, add devise_mailchimp after devise:
 
+<pre><code>
   gem "devise"
   gem "devise_mailchimp"  # Last officially released gem
-
+</code></pre>
+    
 In your User model, add :mailchimp to the devise call:
 
+<pre><code>
   devise :database_authenticatable, ..., :mailchimp
+</code></pre>
 
 In your devise initializer (config/initializers/devise.rb), set your API key and mailing list name:
 
+<pre><code>
   Devise.mailchimp_api_key = 'your_api_key'
   Devise.mailing_list_name = 'List Name'
+</code></pre>
 
 If you are using the default Devise registration views, the Join Mailing List checkbox is added automatically, if not,
 either include the form partial in your new registration form:
 
+<pre><code>
   <%= render :partial => "devise/shared/mailchimp/form", :locals => {:form => f} %>
+</code></pre>
 
 Or manually add a "Join Mailing List" checkbox to your new registration form:
 
-  <%=form.check_box :join_mailing_list%></p>
+<pre><code>
+  <%=form.check_box :join_mailing_list%>
+</code></pre></p>
+    
 <h2>License</h2>
 <p>MIT</p>
 <h2>Authors</h2>
-<p>Justin Cunningham (justin@compucatedsolutions.com)<br/>      </p>
-<h2>Contact</h2>
-<p>Justin Cunningham (justin@compucatedsolutions.com)<br/>      </p>
+<p>Justin Cunningham (justin@compucatedsolutions.com)
+<br/>      </p>
 
 
     <h2>Download</h2>
