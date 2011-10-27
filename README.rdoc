@@ -43,6 +43,10 @@ go to the Lists tab, then hit create list.
 
   Devise.mailing_list_name = 'List Name'
 
+== Documentation
+
+Full documentation is available at {rdoc.info}[http://rdoc.info/github/jcnnghm/devise_mailchimp/master/frames].
+
 == Example Usage
 
 Users will join the default mailing list if join_mailing_list is set to true when the user is created.  To manually add
