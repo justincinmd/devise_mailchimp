@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+
+  <title>jcnnghm/devise_mailchimp @ GitHub</title>
+
+  <style type="text/css">
+    body {
+      margin-top: 1.0em;
+      background-color: #1331a4;
+      font-family: Helvetica, Arial, FreeSans, san-serif;
+      color: #ffffff;
+    }
+    #container {
+      margin: 0 auto;
+      width: 700px;
+    }
+    h1 { font-size: 3.8em; color: #ecce5b; margin-bottom: 3px; }
+    h1 .small { font-size: 0.4em; }
+    h1 a { text-decoration: none }
+    h2 { font-size: 1.5em; color: #ecce5b; }
+    h3 { text-align: center; color: #ecce5b; }
+    a { color: #ecce5b; }
+    .description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+    .download { float: right; }
+    pre { background: #000; color: #fff; padding: 15px;}
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .footer { text-align:center; padding-top:30px; font-style: italic; }
+  </style>
+</head>
+
+<body>
+  <a href="http://github.com/jcnnghm/devise_mailchimp"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub" /></a>
+
+  <div id="container">
+
+    <div class="download">
+      <a href="http://github.com/jcnnghm/devise_mailchimp/zipball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+      <a href="http://github.com/jcnnghm/devise_mailchimp/tarball/master">
+        <img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+    </div>
+
+    <h1><a href="http://github.com/jcnnghm/devise_mailchimp">devise_mailchimp</a>
+      <span class="small">by <a href="http://github.com/jcnnghm">jcnnghm</a></span></h1>
+
+    <div class="description">
+      Easy MailChimp integration for Devise
+    </div>
+
+    <p>Devise MailChimp adds a MailChimp option to Devise that easily enables users to join your mailing list when they create an account.
+
+Delayed Job is used automatically if your project uses it, and the
+mapping between list names and list ids is cached automatically.</p><h2>Dependencies</h2>
+<p>Rails, Devise, Hominid</p>
+<h2>Install</h2>
+<p>In your Gemfile, add devise_mailchimp after devise:
+
+  gem "devise"
+  gem "devise_mailchimp"  # Last officially released gem
+
+In your User model, add :mailchimp to the devise call:
+
+  devise :database_authenticatable, ..., :mailchimp
+
+In your devise initializer (config/initializers/devise.rb), set your API key and mailing list name:
+
+  Devise.mailchimp_api_key = 'your_api_key'
+  Devise.mailing_list_name = 'List Name'
+
+If you are using the default Devise registration views, the Join Mailing List checkbox is added automatically, if not,
+either include the form partial in your new registration form:
+
+  <%= render :partial => "devise/shared/mailchimp/form", :locals => {:form => f} %>
+
+Or manually add a "Join Mailing List" checkbox to your new registration form:
+
+  <%=form.check_box :join_mailing_list%></p>
+<h2>License</h2>
+<p>MIT</p>
+<h2>Authors</h2>
+<p>Justin Cunningham (justin@compucatedsolutions.com)<br/>      </p>
+<h2>Contact</h2>
+<p>Justin Cunningham (justin@compucatedsolutions.com)<br/>      </p>
+
+
+    <h2>Download</h2>
+    <p>
+      You can download this project in either
+      <a href="http://github.com/jcnnghm/devise_mailchimp/zipball/master">zip</a> or
+      <a href="http://github.com/jcnnghm/devise_mailchimp/tarball/master">tar</a> formats.
+    </p>
+    <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+      by running:
+      <pre>$ git clone git://github.com/jcnnghm/devise_mailchimp</pre>
+    </p>
+
+    <div class="footer">
+      get the source code on GitHub : <a href="http://github.com/jcnnghm/devise_mailchimp">jcnnghm/devise_mailchimp</a>
+    </div>
+
+  </div>
+
+  
+</body>
+</html>
