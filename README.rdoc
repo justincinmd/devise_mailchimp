@@ -47,6 +47,10 @@ go to the Lists tab, then hit create list.
 
 Full documentation is available at {rdoc.info}[http://rdoc.info/github/jcnnghm/devise_mailchimp/master/frames].
 
+== Demo Application
+
+A demo application is available at {github}[https://github.com/jcnnghm/devise_mailchimp_demo].
+
 == Example Usage
 
 Users will join the default mailing list if join_mailing_list is set to true when the user is created.  To manually add
