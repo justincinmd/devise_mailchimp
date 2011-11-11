@@ -35,6 +35,15 @@ module Devise
   #   Devise.mailchimp_api_key = "your_api_key"
   mattr_accessor :mailchimp_api_key
   @@mailchimp_api_key = 'your_api_key'
+
+  # Public: Require double opt-in
+  # account tab in your MailChimp account and select API Keys & Authorized Apps, then add
+  # Set mailchimp_api_key in the Devise configuration file (config/initializers/devise.rb)
+  #
+  #   Devise.double_opt_in = false
+  mattr_accessor :double_opt_in
+  @@double_opt_in = false
+
 end
 
 Devise.add_module :mailchimp, :model => 'devise_mailchimp/model'
