@@ -73,13 +73,14 @@ module Devise
 
       # mapper that helps convert list names to mailchimp ids
       def mailchimp_list_mapper
-        @@mailchimp_list_mapper ||= MailchimpListApiMapper.new(self.class.mailchimp_api_key)
+        @@mailchimp_list_mapper ||= MailchimpListApiMapper.new(self.class.mailchimp_api_key, self.class.double_opt_in)
       end
 
       module ClassMethods
         Devise::Models.config(self, :mailchimp_api_key)
         Devise::Models.config(self, :mailing_list_name)
         Devise::Models.config(self, :mailing_list_opt_in_by_default)
+        Devise::Models.config(self, :double_opt_in)
       end
     end
   end
