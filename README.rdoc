@@ -43,6 +43,8 @@ go to the Lists tab, then hit create list.
 
   Devise.mailing_list_name = 'List Name'
 
+For all the configuration settings, take a look at the {model documenation}[http://rubydoc.info/github/jcnnghm/devise_mailchimp/master/Devise/Models/Mailchimp#].
+
 == Documentation
 
 Full documentation is available at {rdoc.info}[http://rdoc.info/github/jcnnghm/devise_mailchimp/master/frames].
@@ -80,6 +82,8 @@ If all users will join the same list or lists, just set the mailing_list_name co
 == Contributions
 
 Please help this software improve by submitting pull requests, preferably with tests.
+
+View our {contributors}[https://github.com/jcnnghm/devise_mailchimp/contributors].
 
 == Copyright
 

@@ -18,6 +18,9 @@ module Devise
     #                      account tab in your MailChimp account and select API Keys & Authorized Apps, then add
     #                      a key.  This defaults to 'your_api_key'
     #
+    #   double_opt_in: Requires that users must click a link in a confirmation email to be added to your mailing list.
+    #                  Defaults to false.
+    #
     # Examples:
     #
     #   User.find(1).add_to_mailchimp_list('Site Administrators List')
