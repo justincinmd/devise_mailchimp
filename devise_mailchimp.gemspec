@@ -19,8 +19,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   {
-    'rails'  => ['>= 3.0.0', '< 3.2'],
-    'devise' => '~> 2.0.0',
+    'rails'  => ['>= 3.0.0', '< 3.3'],
+    'devise' => ['>= 1.4.8', '< 2.1.0'],
     'hominid' => "~> 3.0.2"
   }.each do |lib, version|
     s.add_runtime_dependency(lib, *version)
