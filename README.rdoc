@@ -13,9 +13,10 @@ In your Gemfile, add devise_mailchimp after devise:
   gem "devise"
   gem "devise_mailchimp"  # Last officially released gem
 
-In your User model, add :mailchimp to the devise call:
+In your User model, add :mailchimp to the devise call and make :join_mailing_list accessible:
 
   devise :database_authenticatable, ..., :mailchimp
+  attr_accessible :join_mailing_list
 
 In your devise initializer (config/initializers/devise.rb), set your API key and mailing list name:
 
@@ -29,7 +30,11 @@ either include the form partial in your new registration form:
 
 Or manually add a "Join Mailing List" checkbox to your new registration form:
 
-  <%=form.check_box :join_mailing_list%>
+  <%= form.check_box :join_mailing_list %>
+
+If you are using Simple Form, you can use:
+
+  <%= f.input :join_mailing_list, :as => :boolean %>
 
 == Configuration
 
