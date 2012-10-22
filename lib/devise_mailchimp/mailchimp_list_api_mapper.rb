@@ -71,7 +71,7 @@ module Devise
 
         # the hominid api helper
         def hominid
-          @hominid ||= Hominid::API.new(@api_key)
+          Hominid::API.new(@api_key)
         end
       end
     end
