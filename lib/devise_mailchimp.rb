@@ -17,7 +17,7 @@ module Devise
   #
   #   Devise.mailing_list_name = "Your Mailing List Name"
   mattr_accessor :mailing_list_name
-  @@mailing_list_name = "Site List"
+  @@mailing_list_name = "Newsletter"
 
   # Public: Determines if the checkbox for the user to opt-in to the mailing list should
   # be checked by default, or not.  Defaults to true.
@@ -43,6 +43,13 @@ module Devise
   #   Devise.double_opt_in = false
   mattr_accessor :double_opt_in
   @@double_opt_in = false
+
+  # Public: Send welcome email
+  # Sends the final 'Welcome Email'. Defaults to false.
+  #
+  #   Devise.send_welcome_email = false
+  mattr_accessor :send_welcome_email
+  @@send_welcome_email = false  
 
 end
 
