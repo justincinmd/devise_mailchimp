@@ -50,10 +50,10 @@ go to the Lists tab, then hit create list.
 
   Devise.mailing_list_name = 'List Name'
 
-Add options from the {MailChimp API Docs}[http://apidocs.mailchimp.com/api/1.3/] using the following code in user.rb model:
+Add options from the {MailChimp API Docs}[http://apidocs.mailchimp.com/api/1.3/] using the following code in user.rb model. For GROUPINGS, you can get the Group ID by clicking "import to" and looking at the URL https://us6.admin.mailchimp.com/lists/members/import?id=1234&grp=9999&int=1
 
   def mailchimp_list_subscribe_options
-    {'FNAME' => self.first_name, 'LNAME' => self.last_name, 'GROUPINGS'=>'Signed Up'}
+    {'FNAME' => self.first_name, 'LNAME' => self.last_name, 'GROUPINGS'=> { 0 => {'id' => 9999, 'groups' => "Signed Up" } } }
   end
 
 For all the configuration settings, take a look at the {model documenation}[http://rubydoc.info/github/jcnnghm/devise_mailchimp/master/Devise/Models/Mailchimp#].
