@@ -36,6 +36,7 @@ module Devise
 
       included do
         after_create :commit_mailing_list_join
+        after_update :commit_mailing_list_join
       end
 
       # Set this to true to have the user automatically join the mailchimp_lists_to_join
