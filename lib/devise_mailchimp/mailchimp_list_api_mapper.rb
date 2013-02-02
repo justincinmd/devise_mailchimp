@@ -33,11 +33,11 @@ module Devise
         # several.
         #
         # NOTE: Do not use this method unless the user has opted in.
-        def subscribe_to_lists(list_names, email)
+        def subscribe_to_lists(list_names, email, options)
           list_names = [list_names] unless list_names.is_a?(Array)
           list_names.each do |list_name|
             list_id = name_to_id(list_name)
-            hominid.list_subscribe(list_id, email, {}, 'html', @double_opt_in, true, true, false)
+            hominid.list_subscribe(list_id, email, options, 'html', @double_opt_in, true, true, @send_welcome_email)            
           end
         end
 
