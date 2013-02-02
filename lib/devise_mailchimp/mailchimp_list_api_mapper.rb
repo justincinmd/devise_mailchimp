@@ -7,9 +7,10 @@ module Devise
         LIST_CACHE_KEY = "devise_mailchimp/lists"
 
         # craete a new ApiMapper with the provided API key
-        def initialize(api_key, double_opt_in)
+        def initialize(api_key, double_opt_in, send_welcome_email)
           @api_key = api_key
           @double_opt_in = double_opt_in
+          @send_welcome_email = send_welcome_email
         end
 
         # looks the name up in the cache.  if it doesn't find it, looks it up using the api and saves it to the cache
