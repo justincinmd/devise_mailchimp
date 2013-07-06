@@ -22,6 +22,8 @@ In your devise initializer (config/initializers/devise.rb), set your API key and
 
   Devise.mailchimp_api_key = 'your_api_key'
   Devise.mailing_list_name = 'List Name'
+  Devise.double_opt_in = false  
+  Devise.send_welcome_email = false  
 
 If you are using the default Devise registration views, the Join Mailing List checkbox is added automatically, if not,
 either include the form partial in your new registration form:
@@ -47,6 +49,12 @@ Create a mailing list, and set the mailing list name in the initializer.  To cre
 go to the Lists tab, then hit create list.
 
   Devise.mailing_list_name = 'List Name'
+
+Add options from the {MailChimp API Docs}[http://apidocs.mailchimp.com/api/1.3/] using the following code in user.rb model. For GROUPINGS, you can get the Group ID by clicking "import to" and looking at the URL https://us6.admin.mailchimp.com/lists/members/import?id=1234&grp=9999&int=1
+
+  def mailchimp_list_subscribe_options
+    {'FNAME' => self.first_name, 'LNAME' => self.last_name, 'GROUPINGS'=> { 0 => {'id' => 9999, 'groups' => "Signed Up" } } }
+  end
 
 For all the configuration settings, take a look at the {model documenation}[http://rubydoc.info/github/jcnnghm/devise_mailchimp/master/Devise/Models/Mailchimp#].
 

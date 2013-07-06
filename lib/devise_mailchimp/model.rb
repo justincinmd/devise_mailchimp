@@ -21,6 +21,8 @@ module Devise
     #   double_opt_in: Requires that users must click a link in a confirmation email to be added to your mailing list.
     #                  Defaults to false.
     #
+    #   send_welcome_email: Whether or not the user will get a final Welcome email    
+    #
     # Examples:
     #
     #   User.find(1).add_to_mailchimp_list('Site Administrators List')
@@ -34,6 +36,7 @@ module Devise
 
       included do
         after_create :commit_mailing_list_join
+        after_update :commit_mailing_list_join
       end
 
       # Set this to true to have the user automatically join the mailchimp_lists_to_join
@@ -60,7 +63,8 @@ module Devise
       # Add the user to the mailchimp list with the specified name
       def add_to_mailchimp_list(list_name)
         mapper = mailchimp_list_mapper.respond_to?(:delay) ? mailchimp_list_mapper.delay : mailchimp_list_mapper
-        mapper.subscribe_to_lists(list_name, self.email)
+        options = self.respond_to?(:mailchimp_list_subscribe_options) ? mailchimp_list_subscribe_options : {}
+        mapper.subscribe_to_lists(list_name, self.email, options)        
       end
 
       # remove the user from the mailchimp list with the specified name
@@ -76,7 +80,7 @@ module Devise
 
       # mapper that helps convert list names to mailchimp ids
       def mailchimp_list_mapper
-        @@mailchimp_list_mapper ||= MailchimpListApiMapper.new(self.class.mailchimp_api_key, self.class.double_opt_in)
+        @@mailchimp_list_mapper ||= MailchimpListApiMapper.new(self.class.mailchimp_api_key, self.class.double_opt_in, self.class.send_welcome_email)
       end
 
       module ClassMethods
@@ -84,6 +88,7 @@ module Devise
         Devise::Models.config(self, :mailing_list_name)
         Devise::Models.config(self, :mailing_list_opt_in_by_default)
         Devise::Models.config(self, :double_opt_in)
+        Devise::Models.config(self, :send_welcome_email)
       end
     end
   end
